@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 2,
+  "dockerfileLines": [
+    "FROM --platform=linux/arm64 alpine:latest",
+    "RUN apk add --no-cache -q yarn",
+    "WORKDIR /app",
+    "COPY package.json ./",
+    "COPY yarn.lock ./",
+    "RUN yarn install --silent",
+    "RUN yarn global add react-scripts@5.0.1 --silent",
+    "COPY . ./",
+    "CMD [\"yarn\", \"start\"]"
+  ]
+}
